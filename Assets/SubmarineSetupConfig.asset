@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384bcefcf5a640c4ca99c5ded024fc75, type: 3}
+  m_Name: SubmarineSetupConfig
+  m_EditorClassIdentifier: 
+  modelPath: Assets/Models/Titan Submersible-1.obj
+  submarinePosition: {x: 0, y: -5, z: 0}
+  submarineEuler: {x: -0, y: 0, z: 0}
+  mass: 2000
+  linearDamping: 1
+  angularDamping: 2
+  colliderRadius: 1
+  colliderHeight: 4
+  thirdPersonLocalPosition: {x: 0, y: 2, z: 8}
+  thirdPersonLocalEuler: {x: 9.999999, y: 180, z: -5.1673912e-14}
+  thirdPersonFov: 60
+  firstPersonLocalPosition: {x: 0, y: 1, z: -3}
+  firstPersonLocalEuler: {x: -0, y: 180, z: 0}
+  firstPersonFov: 70
+  leftHeadlightLocalPosition: {x: -1.077, y: -1.817, z: -1.842}
+  leftHeadlightLocalEuler: {x: 355, y: 180, z: -2.5541631e-14}
+  rightHeadlightLocalPosition: {x: 1.027, y: -1.818, z: -1.846}
+  rightHeadlightLocalEuler: {x: 355, y: 180, z: -2.5541631e-14}
+  headlightColor: {r: 0.9, g: 0.95, b: 1, a: 1}
+  headlightIntensity: 3
+  headlightRange: 50
+  headlightSpotAngle: 60

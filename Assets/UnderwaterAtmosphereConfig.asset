@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f4aa5b63980704085e96477004b11f, type: 3}
+  m_Name: UnderwaterAtmosphereConfig
+  m_EditorClassIdentifier: 
+  enableFog: 1
+  fogColor: {r: 0.02, g: 0.08, b: 0.12, a: 1}
+  fogMode: 2
+  fogDensity: 0.15
+  volumeProfileAssetPath: Assets/Settings/UnderwaterVolumeProfile.asset
+  volumeProfile: {fileID: 11400000, guid: 8c20934c5b606ab4cb2d28abb4dcd721, type: 2}
+  volumePriority: 1
+  spawnDebris: 1
+  debrisMaterial: {fileID: 0}
+  debrisBoxSize: {x: 100, y: 50, z: 100}
+  debrisLifetime: 30
+  debrisSpeed: 0.05
+  debrisSizeRange: {x: 0.02, y: 0.08}
+  debrisColor: {r: 0.4, g: 0.45, b: 0.5, a: 0.4}
+  debrisMaxParticles: 800
+  debrisEmissionRate: 40
