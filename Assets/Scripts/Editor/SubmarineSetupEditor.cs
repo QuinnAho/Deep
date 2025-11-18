@@ -59,7 +59,6 @@ public class SubmarineSetupEditor : SceneSetupTool<SubmarineSetupConfig>
         collider.direction = 2;
 
         submarine.AddComponent<SubmarineController>();
-        submarine.AddComponent<SubmarinePhysics>();
 
         GameObject modelInstance = PrefabUtility.InstantiatePrefab(modelAsset) as GameObject;
         modelInstance.transform.SetParent(submarine.transform, false);

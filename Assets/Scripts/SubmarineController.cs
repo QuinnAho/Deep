@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-[RequireComponent(typeof(Rigidbody), typeof(SubmarinePhysics))]
+[RequireComponent(typeof(Rigidbody))]
 public class SubmarineController : MonoBehaviour
 {
     [Header("Propulsion")]
@@ -12,34 +12,27 @@ public class SubmarineController : MonoBehaviour
 
     [Header("Control Surfaces")]
     [SerializeField] private float rudderTorque = 4200f;
-    [SerializeField] private float rollTorque = 2200f;
     [SerializeField] private float controlResponse = 2f;
 
-    [Header("Ballast")]
-    [SerializeField] private float ballastAdjustRate = 0.4f;
-    [SerializeField] private float mouseBallastRate = 2.5f;
+    [Header("Vertical Control")]
+    [SerializeField] private float verticalThrust = 1800f;
 
     private Rigidbody rb;
-    private SubmarinePhysics physics;
     private Keyboard keyboard;
     private Gamepad gamepad;
-    private Mouse mouse;
 
     private float throttle;
     private float targetThrottle;
     private float rudderTarget;
     private float rudderCommand;
-    private float rollTarget;
-    private float rollCommand;
-    private float ballastLevel;
+    private float verticalTarget;
+    private float verticalCommand;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        physics = GetComponent<SubmarinePhysics>();
         keyboard = Keyboard.current;
         gamepad = Gamepad.current;
-        mouse = Mouse.current;
 
         rb.useGravity = false;
         rb.linearDamping = 0.6f;
@@ -50,54 +43,49 @@ public class SubmarineController : MonoBehaviour
     {
         if (keyboard == null) keyboard = Keyboard.current;
         if (gamepad == null) gamepad = Gamepad.current;
-        if (mouse == null) mouse = Mouse.current;
 
-        float leftStickY = gamepad != null ? gamepad.leftStick.y.ReadValue() : 0f;
-        float leftStickX = gamepad != null ? gamepad.leftStick.x.ReadValue() : 0f;
-        float rightStickX = gamepad != null ? gamepad.rightStick.x.ReadValue() : 0f;
-        float triggerDiff = gamepad != null
+        bool hasKeyboard = keyboard != null;
+        bool hasGamepad = gamepad != null;
+
+        float leftStickY = hasGamepad ? gamepad.leftStick.y.ReadValue() : 0f;
+        float leftStickX = hasGamepad ? gamepad.leftStick.x.ReadValue() : 0f;
+        float triggerDiff = hasGamepad
             ? gamepad.rightTrigger.ReadValue() - gamepad.leftTrigger.ReadValue()
             : 0f;
 
-        targetThrottle = ComposeInput(keyboard?.wKey, keyboard?.sKey, leftStickY);
-        rudderTarget = ComposeInput(keyboard?.dKey, keyboard?.aKey, leftStickX);
-        rollTarget = ComposeInput(keyboard?.eKey, keyboard?.qKey, rightStickX);
+        targetThrottle = ComposeInput(
+            hasKeyboard ? keyboard.wKey : null,
+            hasKeyboard ? keyboard.sKey : null,
+            leftStickY);
 
-        float ballastDelta = ComposeInput(keyboard?.spaceKey, keyboard?.leftCtrlKey, triggerDiff);
-        float targetBallast = Mathf.Clamp(ballastLevel + ballastDelta * ballastAdjustRate * Time.deltaTime, -1f, 1f);
-        float adjustRate = ballastAdjustRate;
-        if (mouse != null)
-        {
-            if (mouse.leftButton.isPressed)
-            {
-                targetBallast = 1f;
-                adjustRate = mouseBallastRate;
-            }
-            else if (mouse.rightButton.isPressed)
-            {
-                targetBallast = -1f;
-                adjustRate = mouseBallastRate;
-            }
-        }
-        ballastLevel = Mathf.MoveTowards(ballastLevel, targetBallast, adjustRate * Time.deltaTime);
+        rudderTarget = ComposeInput(
+            hasKeyboard ? keyboard.dKey : null,
+            hasKeyboard ? keyboard.aKey : null,
+            leftStickX);
+
+        verticalTarget = ComposeInput(
+            hasKeyboard ? keyboard.eKey : null,
+            hasKeyboard ? keyboard.qKey : null,
+            triggerDiff);
     }
 
     private void FixedUpdate()
     {
         throttle = Mathf.MoveTowards(throttle, targetThrottle, throttleResponse * Time.fixedDeltaTime);
         rudderCommand = Mathf.MoveTowards(rudderCommand, rudderTarget, controlResponse * Time.fixedDeltaTime);
-        rollCommand = Mathf.MoveTowards(rollCommand, rollTarget, controlResponse * Time.fixedDeltaTime);
+        verticalCommand = Mathf.MoveTowards(verticalCommand, verticalTarget, controlResponse * Time.fixedDeltaTime);
 
         float thrustForce = throttle >= 0f ? throttle * maxForwardThrust : throttle * maxReverseThrust;
         rb.AddForce(transform.forward * thrustForce, ForceMode.Force);
 
         rb.AddTorque(transform.up * rudderCommand * rudderTorque * Time.fixedDeltaTime, ForceMode.Force);
-        rb.AddTorque(transform.forward * rollCommand * rollTorque * Time.fixedDeltaTime, ForceMode.Force);
-
-        physics.SetBallastLevel(ballastLevel);
+        rb.AddForce(Vector3.up * verticalCommand * verticalThrust, ForceMode.Force);
     }
 
-    private float ComposeInput(KeyControl positive, KeyControl negative, float analog = 0f)
+    private float ComposeInput(
+        KeyControl positive,
+        KeyControl negative,
+        float analog = 0f)
     {
         float value = analog;
         if (positive != null && positive.isPressed) value += 1f;

@@ -28,10 +28,10 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     supportVolumetrics: 1
-    supportVolumetricClouds: 0
+    supportVolumetricClouds: 1
     supportLightLayers: 0
     renderingLayerMaskBuffer: 0
-    supportWater: 0
+    supportWater: 1
     waterSimulationResolution: 128
     supportWaterExclusion: 1
     supportWaterDecals: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
       maxPlanarReflectionOnScreen: 8
       maxDecalsOnScreen: 512
       maxLightsPerClusterCell: 8
-      maxLocalVolumetricFogSize: 0
+      maxLocalVolumetricFogSize: 32
       maxLocalVolumetricFogOnScreen: 256
     hdShadowInitParams:
       maxShadowRequests: 128
@@ -361,7 +361,7 @@ MonoBehaviour:
     enableSubsurfaceScattering: 0
     enableTransmission: 0
     enableAtmosphericScattering: 0
-    enableVolumetrics: 0
+    enableVolumetrics: 1
     enableReprojectionForVolumetrics: 0
     enableLightLayers: 0
     enableExposureControl: 1
@@ -406,7 +406,7 @@ MonoBehaviour:
     enableSubsurfaceScattering: 0
     enableTransmission: 0
     enableAtmosphericScattering: 0
-    enableVolumetrics: 0
+    enableVolumetrics: 1
     enableReprojectionForVolumetrics: 0
     enableLightLayers: 0
     enableExposureControl: 1
@@ -451,7 +451,7 @@ MonoBehaviour:
     enableSubsurfaceScattering: 0
     enableTransmission: 0
     enableAtmosphericScattering: 0
-    enableVolumetrics: 0
+    enableVolumetrics: 1
     enableReprojectionForVolumetrics: 0
     enableLightLayers: 0
     enableExposureControl: 1

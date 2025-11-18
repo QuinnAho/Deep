@@ -304,7 +304,7 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
+  m_GateFitMode: 1
   m_FOVAxisMode: 0
   m_Iso: 200
   m_ShutterSpeed: 0.005
@@ -524,9 +524,7 @@ GameObject:
   - component: {fileID: 8792664321216107753}
   - component: {fileID: 8184341496781895856}
   - component: {fileID: 4679761804755545978}
-  - component: {fileID: 5307617349576821099}
   - component: {fileID: 8132667168782489312}
-  - component: {fileID: 5481226110650707397}
   - component: {fileID: 2025709780768193185}
   m_Layer: 0
   m_Name: TitanSubmarine
@@ -604,32 +602,6 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5307617349576821099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7226102141318448284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adfd8292bb056d940ba94e1da59324d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterLevel: 0
-  waterDrag: 3
-  waterAngularDrag: 1
-  displacedVolume: 9.5
-  waterDensity: 1027
-  trimDepth: 4
-  ballastForce: 2.5
-  hydrodynamicDrag: 0.8
-  hydrodynamicAngularDrag: 0.4
-  maxDepth: 100
-  crushDepth: 150
-  enableDepthLimit: 0
-  oceanCurrent: {x: 0, y: 0, z: 0}
-  currentStrength: 1
 --- !u!114 &8132667168782489312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,36 +618,8 @@ MonoBehaviour:
   maxReverseThrust: 30
   throttleResponse: 1.2
   rudderTorque: 4200
-  rollTorque: 2200
   controlResponse: 2
-  ballastAdjustRate: 0.4
-  mouseBallastRate: 2.5
---- !u!114 &5481226110650707397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7226102141318448284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adfd8292bb056d940ba94e1da59324d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterLevel: 0
-  waterDrag: 3
-  waterAngularDrag: 1
-  displacedVolume: 9.5
-  waterDensity: 1027
-  trimDepth: 4
-  ballastForce: 2.5
-  hydrodynamicDrag: 0.8
-  hydrodynamicAngularDrag: 0.4
-  maxDepth: 100
-  crushDepth: 150
-  enableDepthLimit: 0
-  oceanCurrent: {x: 0, y: 0, z: 0}
-  currentStrength: 1
+  verticalThrust: 1800
 --- !u!114 &2025709780768193185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +682,7 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
+  m_GateFitMode: 1
   m_FOVAxisMode: 0
   m_Iso: 200
   m_ShutterSpeed: 0.005

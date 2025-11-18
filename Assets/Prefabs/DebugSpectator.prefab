@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5892813847366140727}
   - component: {fileID: 3060534160004982929}
-  - component: {fileID: 8373988954856358817}
   m_Layer: 0
   m_Name: SpectatorCamera
   m_TagString: Untagged

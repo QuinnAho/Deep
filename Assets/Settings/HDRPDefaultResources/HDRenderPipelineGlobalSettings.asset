@@ -249,7 +249,7 @@ MonoBehaviour:
         m_CustomOrBakedReflection:
           bitDatas:
             data1: 4643523019153229
-            data2: 12898309406071980048
+            data2: 12898309406072012816
           lodBias: 1
           lodBiasMode: 0
           lodBiasQualityLevel: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
           materialQuality: 0
         m_RealtimeReflection:
           bitDatas:
-            data1: 4638910381585229
+            data1: 4638918971519309
             data2: 12898310333516513304
           lodBias: 1
           lodBiasMode: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
       type: {class: WaterSystemGlobalSettings, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
       data:
         m_Version: 1
-        m_EnableMaskAndCurrentWaterDecals: 0
+        m_EnableMaskAndCurrentWaterDecals: 1
     - rid: 8746148072781250654
       type: {class: HDRenderPipelineEditorTextures, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
       data:
