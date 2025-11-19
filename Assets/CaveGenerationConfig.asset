@@ -16,7 +16,7 @@ MonoBehaviour:
   height: 256
   seed: deep_cave
   useRandomSeed: 1
-  randomFillPercent: 51
+  randomFillPercent: 47
   smoothingIterations: 5
   wallThresholdSize: 50
   roomThresholdSize: 50

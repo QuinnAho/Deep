@@ -107,4 +107,20 @@ public class DebugSpectatorController : MonoBehaviour
         Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !locked;
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+
+        if (rb == null || rb.isKinematic)
+            return;
+
+        // Don't push objects below us
+        if (hit.moveDirection.y < -0.3f)
+            return;
+
+        // Apply push force
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        rb.AddForce(pushDir * moveSpeed * 0.5f, ForceMode.Impulse);
+    }
 }
